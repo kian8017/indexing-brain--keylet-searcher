@@ -58,7 +58,7 @@ const filteredImages = images
           style={{ backgroundColor: "#add8e6" }}
         >
           {selectedImageUrl ? (
-            <img src={selectedImageUrl} alt={selectedImage} style={{ maxWidth: "100%", maxHeight: "100%" }} />
+            <img src={selectedImageUrl} alt={selectedImage} style={{ maxHeight: "100%", width: "auto" }} />
           ) : (
             <h1>Image Preview</h1>
           )}
