@@ -61,7 +61,7 @@ export function App() {
               Clear
             </Button>
           </InputGroup>
-          <ListGroup className="flex-grow-1 overflow-auto">
+          <ListGroup className="flex-grow-1 search-results">
             {filteredImages.length > 0 ? (
               filteredImages.map((image) => (
                 <ListGroup.Item
