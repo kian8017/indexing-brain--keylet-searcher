@@ -44,6 +44,7 @@ export function App() {
               <ListGroup.Item
                 key={image}
                 onClick={() => setSelectedImage(image)}
+                className={image === selectedImage ? "selected" : ""}
               >
                 {image}
               </ListGroup.Item>

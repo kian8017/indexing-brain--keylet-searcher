@@ -3,3 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
+.selected {
+  background-color: #d3d3d3; /* Light gray background */
+  font-weight: bold; /* Bold text */
+}
