@@ -25,10 +25,8 @@ export function App() {
     }
   }, [selectedImage]);
 
-const filteredImages = images
-    .filter((image) =>
-      image.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+  const filteredImages = images
+    .filter((image) => image.toLowerCase().includes(searchTerm.toLowerCase()))
     .slice(0, 10); // Limit to the first 10 results
 
   return (
@@ -58,7 +56,11 @@ const filteredImages = images
           style={{ backgroundColor: "#add8e6" }}
         >
           {selectedImageUrl ? (
-            <img src={selectedImageUrl} alt={selectedImage} style={{ maxHeight: "100vh", width: "auto" }} />
+            <img
+              src={selectedImageUrl}
+              alt={selectedImage}
+              style={{ maxHeight: "100vh", maxWidth: "100%" }}
+            />
           ) : (
             <h1>Image Preview</h1>
           )}
