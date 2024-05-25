@@ -53,7 +53,7 @@ export function App() {
                   onClick={() => setSelectedImage(image)}
                   className={image === selectedImage ? "selected" : ""}
                 >
-                  {image}
+                  {image.replace(/\.[^/.]+$/, "")}
                 </ListGroup.Item>
               ))
             ) : (
