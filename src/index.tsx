@@ -25,6 +25,12 @@ export function App() {
     }
   }, [selectedImage]);
 
+  useEffect(() => {
+    if (filteredImages.length > 0) {
+      setSelectedImage(filteredImages[0]);
+    }
+  }, [searchTerm, images]);
+
   const filteredImages = images
     .filter((image) => image.toLowerCase().includes(searchTerm.toLowerCase()))
     .slice(0, 10); // Limit to the first 10 results
