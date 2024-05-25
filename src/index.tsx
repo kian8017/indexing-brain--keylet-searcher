@@ -44,6 +44,7 @@ export function App() {
             placeholder="Search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-box"
           />
           <ListGroup className="flex-grow-1 overflow-auto">
             {filteredImages.length > 0 ? (

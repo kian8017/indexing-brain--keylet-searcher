@@ -7,3 +7,6 @@ html, body {
   background-color: #d3d3d3; /* Light gray background */
   font-weight: bold; /* Bold text */
 }
+.search-box {
+  margin-bottom: 10px; /* Add margin below the search box */
+}
