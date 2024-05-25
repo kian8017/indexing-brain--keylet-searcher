@@ -1,43 +1,41 @@
 import { hydrate, prerender as ssr } from 'preact-iso';
-
-import preactLogo from './assets/preact.svg';
+import { useState } from 'preact/hooks';
+import { Container, Row, Col, Form, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 export function App() {
-	return (
-		<div>
-			<a href="https://preactjs.com" target="_blank">
-				<img src={preactLogo} alt="Preact logo" height="160" width="160" />
-			</a>
-			<h1>Get Started building Vite-powered Preact Apps </h1>
-			<section>
-				<Resource
-					title="Learn Preact"
-					description="If you're new to Preact, try the interactive tutorial to learn important concepts"
-					href="https://preactjs.com/tutorial"
-				/>
-				<Resource
-					title="Differences to React"
-					description="If you're coming from React, you may want to check out our docs to see where Preact differs"
-					href="https://preactjs.com/guide/v10/differences-to-react"
-				/>
-				<Resource
-					title="Learn Vite"
-					description="To learn more about Vite and how you can customize it to fit your needs, take a look at their excellent documentation"
-					href="https://vitejs.dev"
-				/>
-			</section>
-		</div>
-	);
-}
+	const [searchTerm, setSearchTerm] = useState('');
+	const [selectedImage, setSelectedImage] = useState(null);
+	const images = ['Eliza', 'Elizabeth', 'Elizabelle']; // Placeholder image names
 
-function Resource(props) {
+	const filteredImages = images.filter(image =>
+		image.toLowerCase().includes(searchTerm.toLowerCase())
+	);
+
 	return (
-		<a href={props.href} target="_blank" class="resource">
-			<h2>{props.title}</h2>
-			<p>{props.description}</p>
-		</a>
+		<Container>
+			<Row>
+				<Col md={4}>
+					<Form.Control
+						type="text"
+						placeholder="Search"
+						value={searchTerm}
+						onChange={e => setSearchTerm(e.target.value)}
+					/>
+					<ListGroup>
+						{filteredImages.map(image => (
+							<ListGroup.Item key={image} onClick={() => setSelectedImage(image)}>
+								{image}
+							</ListGroup.Item>
+						))}
+					</ListGroup>
+				</Col>
+				<Col md={8} className="d-flex justify-content-center align-items-center" style={{ backgroundColor: '#add8e6', minHeight: '400px' }}>
+					{selectedImage ? <h1>{selectedImage}</h1> : <h1>Image Preview</h1>}
+				</Col>
+			</Row>
+		</Container>
 	);
 }
 
