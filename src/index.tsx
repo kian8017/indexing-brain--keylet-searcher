@@ -47,7 +47,7 @@ export function App() {
     <Container fluid className="vh-100">
       <Row className="h-100">
         <Col md={4} className="d-flex flex-column">
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3 mt-3">
             <Form.Control
               type="text"
               placeholder="Search"
