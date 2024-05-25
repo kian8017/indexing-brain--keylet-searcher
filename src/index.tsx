@@ -17,9 +17,11 @@ export function App() {
       .catch((error) => console.error("Error fetching image names:", error));
   }, []);
 
-  const filteredImages = images.filter((image) =>
-    image.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const filteredImages = images
+    .filter((image) =>
+      image.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .slice(0, 10); // Limit to the first 10 results
 
   return (
     <Container fluid className="vh-100">
