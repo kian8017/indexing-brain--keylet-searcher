@@ -7,6 +7,7 @@ import "./style.css";
 export function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null); // State to hold the URL of the selected image
 
   const [images, setImages] = useState([]); // State to hold the list of image names
   useEffect(() => {
@@ -17,7 +18,14 @@ export function App() {
       .catch((error) => console.error("Error fetching image names:", error));
   }, []);
 
-  const filteredImages = images
+  useEffect(() => {
+    if (selectedImage) {
+      const imageUrl = `https://images.ib.com/${selectedImage}`;
+      setSelectedImageUrl(imageUrl);
+    }
+  }, [selectedImage]);
+
+const filteredImages = images
     .filter((image) =>
       image.toLowerCase().includes(searchTerm.toLowerCase())
     )
@@ -49,7 +57,11 @@ export function App() {
           className="d-flex justify-content-center align-items-center"
           style={{ backgroundColor: "#add8e6" }}
         >
-          {selectedImage ? <h1>{selectedImage}</h1> : <h1>Image Preview</h1>}
+          {selectedImageUrl ? (
+            <img src={selectedImageUrl} alt={selectedImage} style={{ maxWidth: "100%", maxHeight: "100%" }} />
+          ) : (
+            <h1>Image Preview</h1>
+          )}
         </Col>
       </Row>
     </Container>
