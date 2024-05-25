@@ -46,15 +46,19 @@ export function App() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <ListGroup className="flex-grow-1 overflow-auto">
-            {filteredImages.map((image) => (
-              <ListGroup.Item
-                key={image}
-                onClick={() => setSelectedImage(image)}
-                className={image === selectedImage ? "selected" : ""}
-              >
-                {image}
-              </ListGroup.Item>
-            ))}
+            {filteredImages.length > 0 ? (
+              filteredImages.map((image) => (
+                <ListGroup.Item
+                  key={image}
+                  onClick={() => setSelectedImage(image)}
+                  className={image === selectedImage ? "selected" : ""}
+                >
+                  {image}
+                </ListGroup.Item>
+              ))
+            ) : (
+              <ListGroup.Item>No results found</ListGroup.Item>
+            )}
           </ListGroup>
         </Col>
         <Col
