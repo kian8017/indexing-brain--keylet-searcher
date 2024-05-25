@@ -41,7 +41,7 @@ export function App() {
 
   const filteredImages = images
     .filter((image) => image.toLowerCase().includes(searchTerm.toLowerCase()))
-    .slice(0, 10); // Limit to the first 10 results
+    .slice(0, 30); // Limit to the first 30 results
 
   return (
     <Container fluid className="vh-100">
