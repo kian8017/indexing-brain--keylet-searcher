@@ -14,16 +14,16 @@ export function App() {
 	);
 
 	return (
-		<Container>
-			<Row>
-				<Col md={4}>
+		<Container fluid className="vh-100">
+			<Row className="h-100">
+				<Col md={4} className="d-flex flex-column">
 					<Form.Control
 						type="text"
 						placeholder="Search"
 						value={searchTerm}
 						onChange={e => setSearchTerm(e.target.value)}
 					/>
-					<ListGroup>
+					<ListGroup className="flex-grow-1 overflow-auto">
 						{filteredImages.map(image => (
 							<ListGroup.Item key={image} onClick={() => setSelectedImage(image)}>
 								{image}
@@ -31,7 +31,7 @@ export function App() {
 						))}
 					</ListGroup>
 				</Col>
-				<Col md={8} className="d-flex justify-content-center align-items-center" style={{ backgroundColor: '#add8e6', minHeight: '400px' }}>
+				<Col md={8} className="d-flex justify-content-center align-items-center" style={{ backgroundColor: '#add8e6' }}>
 					{selectedImage ? <h1>{selectedImage}</h1> : <h1>Image Preview</h1>}
 				</Col>
 			</Row>
