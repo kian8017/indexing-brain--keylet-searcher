@@ -1,6 +1,14 @@
 import { hydrate, prerender as ssr } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
-import { Container, Row, Col, Form, ListGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  ListGroup,
+  InputGroup,
+  Button,
+} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
@@ -39,22 +47,20 @@ export function App() {
     <Container fluid className="vh-100">
       <Row className="h-100">
         <Col md={4} className="d-flex flex-column">
-          <div className="search-container">
+          <InputGroup className="mb-3">
             <Form.Control
               type="text"
               placeholder="Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-box"
             />
-            <button
-              type="button"
-              className="clear-button"
+            <Button
+              variant="outline-secondary"
               onClick={() => setSearchTerm("")}
             >
               Clear
-            </button>
-          </div>
+            </Button>
+          </InputGroup>
           <ListGroup className="flex-grow-1 overflow-auto">
             {filteredImages.length > 0 ? (
               filteredImages.map((image) => (
