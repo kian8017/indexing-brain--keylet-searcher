@@ -39,13 +39,22 @@ export function App() {
     <Container fluid className="vh-100">
       <Row className="h-100">
         <Col md={4} className="d-flex flex-column">
-          <Form.Control
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-box"
-          />
+          <div className="search-container">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-box"
+            />
+            <button
+              type="button"
+              className="clear-button"
+              onClick={() => setSearchTerm("")}
+            >
+              Clear
+            </button>
+          </div>
           <ListGroup className="flex-grow-1 overflow-auto">
             {filteredImages.length > 0 ? (
               filteredImages.map((image) => (
